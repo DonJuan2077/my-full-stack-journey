@@ -1,0 +1,46 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "什么是 **Promise (承诺)**？  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "想象一下你在网上购物。下单后，你不会立刻拿到商品，而是会得到一个\"**快递单号**\"。这个“快递单号”就是我们的 Promise。  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "这个“快递单号”有几种状态：  \n- 处理中 (Pending)：包裹还在路上。  \n- 已送达 (Fulfilled/Resolved)：你成功收到了包裹。  \n- 配送失败 (Rejected)：包裹寄丢了。  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Promise 就是 JavaScript 世界里的“快递单号”。  \n当你发起一个异步操作（比如网络请求），函数不会立刻返回数据，而是返回一个 Promise 对象，承诺你未来会有一个结果。  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "\n**fetch**: 发出网络请求. \nfetch 是一个现代的 JavaScript 函数，专门用来向服务器请求数据。它发起请求后，返回的就是一个 Promise。  \n我们通过 .then() 来指定“包裹成功送达”后做什么，通过 .catch() 来指定“配送失败”后做什么。  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "// 我们要请求的服务器地址\nconst apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';\n\nconsole.log(\"正在发送请求...\");\n\n// fetch 返回一个 Promise\nfetch(apiUrl)\n  .then(response => {\n    // 第一个 .then 处理的是服务器的原始响应\n    // 我们需要调用 .json() 来解析它，.json() 本身也返回一个 Promise\n    console.log(\"收到服务器响应，正在解析...\");\n    return response.json(); \n  })\n  .then(data => {\n    // 第二个 .then 处理的是解析完成后的 JSON 数据\n    console.log(\"解析完成！获取到的数据是:\");\n    console.log(data);\n  })\n  .catch(error => {\n    // .catch 会捕获整个链条中任何地方发生的错误\n    console.error(\"请求失败:\", error);\n  });\n\nconsole.log(\"请求已发送，主线程继续执行...\");"
+            ],
+            "outputs": []
+        }
+    ]
+}
