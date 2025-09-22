@@ -1,0 +1,81 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "**异步 (Asynchronous)**"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "就像发短信 💬：你发个消息出去，然后不用原地等待回复，可以继续做其他事情。等对方回复了，你再回头处理。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(\"你好\");\r\n\r\n// 设置一个0毫秒后执行的任务\r\nsetTimeout(() => {\r\n  console.log(\"我是AI导师\");\r\n}, 0);\r\n\r\nconsole.log(\"再见\");\r\n// 计算机会优先处理其他事情，最后回短信"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "- 订单顺序相同，延迟时间不同"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(\"订单1: 开始\");\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单3: 0毫秒的餐好了\");\r\n}, 0);\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单4: 1毫秒的餐好了\");\r\n}, 1);\r\n\r\nconsole.log(\"订单2: 结束\");"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(\"订单1: 开始\");\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单3: 1毫秒的餐好了\");\r\n}, 1);\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单4: 0毫秒的餐好了\");\r\n}, 0);\r\n\r\nconsole.log(\"订单2: 结束\");"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "- 订单顺序不同，延迟时间相同"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(\"订单1: 开始\");\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单3: 0毫秒的餐好了\");\r\n}, 0);\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单4: 0毫秒的餐好了\");\r\n}, 0);\r\n\r\nconsole.log(\"订单2: 结束\");"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(\"订单1: 开始\");\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单4: 0毫秒的餐好了\");\r\n}, 0);\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单3: 0毫秒的餐好了\");\r\n}, 0);\r\n\r\nconsole.log(\"订单2: 结束\");"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "- 延迟时间与回调时间"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(\"订单1: 开始\");\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单3: 开始吃0毫秒的超大汉堡 (耗时任务开始)\");\r\n  \r\n  // 这段代码会空转3秒，模拟一个耗时的计算任务\r\n  const startTime = Date.now();\r\n  while (Date.now() - startTime < 3000) {\r\n    // 循环3秒钟\r\n  }\r\n  \r\n  console.log(\"订单3: 终于吃完了汉堡 (耗时任务结束)\");\r\n}, 0);\r\n\r\nsetTimeout(() => {\r\n  console.log(\"订单4: 1毫秒的普通可乐好了\");\r\n}, 1);\r\n\r\nconsole.log(\"订单2: 结束\");"
+            ],
+            "outputs": []
+        }
+    ]
+}

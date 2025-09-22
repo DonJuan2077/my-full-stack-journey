@@ -1,0 +1,53 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "- == 和 === 的陷阱"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "console.log(\"--- 字符串与数字 ---\");\r\nconsole.log(\"5 == '5'  :\", 5 == \"5\");\r\nconsole.log(\"5 === '5' :\", 5 === \"5\");\r\n\r\nconsole.log(\"\\n--- 布尔值与数字 ---\");\r\nconsole.log(\"0 == false  :\", 0 == false);\r\nconsole.log(\"0 === false :\", 0 === false);\r\nconsole.log(\"1 == true   :\", 1 == true);\r\nconsole.log(\"1 === true  :\", 1 === true);\r\n\r\nconsole.log(\"\\n--- null 与 undefined ---\");\r\nconsole.log(\"null == undefined  :\", null == undefined);\r\nconsole.log(\"null === undefined :\", null === undefined);"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "- 函数的五个关键部分  \r\n**function关键字、函数名、参数列表、函数体{}、return语句**"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "- 传统函数"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function add(a, b) {\r\n  return a + b;\r\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "- 箭头函数"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "// 用 const 来声明一个函数变量\r\nconst addArrow = (a, b) => {\r\n  return a + b;\r\n};\r\n// 如果你的函数体里只有一行 return 语句，那我们可以省略 {} 和 return 关键字：\r\nconst addArrowShort = (a, b) => a + b;"
+            ],
+            "outputs": []
+        }
+    ]
+}
